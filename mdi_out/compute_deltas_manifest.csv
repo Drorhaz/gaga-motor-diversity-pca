@@ -1,0 +1,4 @@
+family,pattern,n_participants,n_features,participant_session_source
+STD,*_STD,7,10,Participant:Participant; Session:Session
+CV,*_CV,7,10,Participant:Participant; Session:Session
+ZeroCross,*_ZeroCross,7,10,Participant:Participant; Session:Session

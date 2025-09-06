@@ -1,0 +1,74 @@
+# === Global paths ===
+paths:
+  raw_dir: ./raw_data                # input CSVs to process
+  out_unified: ./unified_features.csv
+  data_clean_dir: ./data_clean
+  data_preprocessed_dir: ./data_preprocessed
+  data_angles_dir: ./data_angles
+  data_features_dir: ./data_features
+  mdi_out_dir: ./mdi_out
+  participants_table: ./raw_data/participants_shoulder_width.csv  # or .csv
+
+participants:
+  participant_col: Participant
+  shoulder_col: shoulder_width_m
+
+# === Sampling / resampling (check_sampling.py) ===
+sampling:
+  timebase: auto           # auto | frame | timestamp
+  target_fps: 120
+  method: pchip            # pchip | linear | cubic
+  tolerance: 0.001         # fps bias tolerance for auto decision
+  plots: false             # true to save residual/dt plots
+  timescale: auto          # auto | seconds | ms | ticks
+  tick_scale: 0.00104166   # seconds per tick if using ticks
+
+# === Preprocess (preprocess.py) ===
+preprocess:
+  fps: 120
+  cutoff_hz: 8
+  order: 4
+  shoulder_override_m: null   # e.g., 0.39 to force a single width; otherwise null → look up per participant
+
+# === Angles (joint_angles.py) ===
+angles:
+  butter_cutoff_hz: 8       # (for reference; joint_angles.py has this inside)
+  savgol_window: 11         # (for reference)
+  savgol_poly: 2            # (for reference)
+  angle_min: 0
+  angle_max: 180
+  max_ang_vel: 500
+
+# === Features (features.py) ===
+features:
+  trust_input: false          # true = skip re-masking; false = mask again safely
+  vel_max: 500
+  spike_frames_unmask: 1
+  active_threshold: 10
+  write_long: false
+
+# === PCA / MDI (PCA.py) ===
+pca:
+  include: "*_STD,*_CV,*_ZeroCross"
+  max_missing: 0.20
+  corr_thresh: 0.95
+  autoprune: true
+  keep_preference: "CV,ZeroCross,STD"
+  k: 3
+  plot_pcs: "1,2"
+
+# === Deltas (compute_deltas.py) ===
+deltas:
+  include: "*_STD,*_CV,*_ZeroCross"
+  make_heatmaps: true
+
+# === Paired stats (paired_mdi_stats.py) ===
+paired_stats:
+  metric: varweighted         # varweighted | euclid
+  boot_n: 10000
+  boot_seed: 7
+
+# === LOPO logistic (lopo_logistic.py) ===
+lopo:
+  permutations: 1000
+  seed: 42
