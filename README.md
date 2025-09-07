@@ -1,8 +1,13 @@
-# Quantifying Motor Diversity in Gaga Dance Practice Using Machine Learning
+### Quantifying Motor Diversity in Gaga Dance Practice Using Machine Learning
 
-A machine-learning pipeline for extracting kinematic features from motion-capture data, computing a Motor Diversity Index (MDI), and evaluating learning-related changes in Gaga dance practice.
+This project develops a reproducible machine-learning pipeline for analyzing 3D motion-capture data in the context of **Gaga dance**, a movement language that encourages exploration beyond habitual patterns. The core contribution is the **Motor Diversity Index (MDI)**, a variance-weighted PCA metric that quantifies how broadly and flexibly participants use their bodies during practice.
+
+Using data from a one-month Gaga course (*n* = 7), we show that MDI increases over time, reflecting greater postural variability and broader multi-joint engagement. Logistic regression with leave-one-participant-out (LOPO) evaluation demonstrates above-chance cross-participant generalization (AUROC ≈ 0.78), while permutation testing safeguards against overfitting in this high feature-to-sample setting.
+
+The repository provides all code, configuration files, and outputs, including standardized kinematic feature extraction, PCA/MDI computation, statistical analyses, and publication-ready figures. This framework offers a methodological foundation for future studies on motor learning and its modulation by interventions such as **psilocybin**, with planned extensions to larger cohorts, richer kinematic features, and advanced modeling approaches (e.g., mixed-effects models, gradient boosting, time-series analysis, functional PCA).
 
 ---
+
 
 ## Project Overview
 Motor diversity reflects the range and variability of human movement, yet conventional motor learning measures (e.g., speed, accuracy) often overlook this dimension. Gaga, a movement language designed to expand expression beyond habitual patterns, provides a unique context for studying motor variability. Establishing this framework in a control group sets the stage for future investigations into whether psilocybin—known to enhance creativity and disrupt habitual behaviors—can further amplify motor divers...
